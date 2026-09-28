@@ -63,21 +63,14 @@ def leading_zeros(n):
 
 def ip_to_binary(ip):
     binary = ""
-    if is_valid_ip(ip):
-        split_ip = ip.split('.')
-        if len(split_ip) != 4:
-            return "Error - Invalid IP"
-        for part in split_ip:
-            binary += leading_zeros(decimal_to_binary(int(part)) + ".")
-        return binary[:-1]
-    else:
-        return "Error - Invalid IP"
+    split_ip = ip.split('.')
+    for part in split_ip:
+        binary += leading_zeros(decimal_to_binary(int(part)) + ".")
+    return binary[:-1]
 
 def binary_to_ip(binary):
     decimal = ""
     split_bin = binary.split('.')
-    if len(split_bin) != 4:
-        return "Error - Invalid IP"
     for part in split_bin:
         decimal += str(binary_to_decimal(part)) + "."
     return decimal[:-1]
